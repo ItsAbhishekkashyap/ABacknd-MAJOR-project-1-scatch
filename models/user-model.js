@@ -9,12 +9,13 @@ const userSchema = mongoose.Schema({
     },
     email: String,
     password: String,
-    cart: {
-        type: Array,
-        default: []
-    },
+    cart: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "product",
+        }
+    ],
 
-    isadmin: Boolean,
     orders: {
         type: Array,
         default: [],
@@ -23,4 +24,4 @@ const userSchema = mongoose.Schema({
     picture: String,
 });
 
-module.exports = mongoose.model('user',userSchema);
+module.exports = mongoose.model('user', userSchema);
